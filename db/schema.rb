@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110913192650) do
+ActiveRecord::Schema.define(:version => 20110913195202) do
+
+  create_table "fuel_prices", :force => true do |t|
+    t.date    "week_begins_on",                                :null => false
+    t.decimal "unleaded_price", :precision => 16, :scale => 8, :null => false
+    t.decimal "diesel_price",   :precision => 16, :scale => 8, :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
