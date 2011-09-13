@@ -16,6 +16,20 @@ $ ->
               chart.redraw()
     title:
       text: 'Fuel Prices'
+    tooltip:
+      shared: true
+      formatter: ->
+        s = '<b>' + Highcharts.dateFormat('%A, %b %e, %Y', this.x) + '</b>'
+        $.each this.points, (i, point) ->
+          s += '<br/>' + point.series.name + ': £' + point.y.toFixed(2)
+        s
+    plotOptions:
+      series:
+        marker:
+          enabled: false
+          states:
+            hover:
+              enabled: true
     xAxis:
       type: 'datetime'
     yAxis:
