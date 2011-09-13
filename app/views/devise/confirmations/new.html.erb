@@ -1,0 +1,22 @@
+<h2>Resend confirmation instructions</h2>
+
+<div class="row">
+  <div class="span12 columns">
+    <p>
+      When you signed up for an account, we sent you a confirmation email to
+      verify that your email address was valid. If you didn't receive the
+      email, fill out your email address and I'll resend it.
+    </p>
+
+    <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+      <%= form_text_input f, :text_field, :email, label: 'Email address', autofocus: true, class: 'xlarge', size: 30 %>
+
+      <div class="actions">
+        <%= f.submit "Resend confirmation instructions", class: 'btn primary' %>
+        <%= link_to 'Cancel', new_user_session_path, class: 'btn' %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= render :partial => "devise/shared/links" %>
+</div>

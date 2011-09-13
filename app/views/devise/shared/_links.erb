@@ -1,0 +1,22 @@
+<ul class="span4 columns unstyled">
+  <% unless controller_name == 'sessions' %>
+    <li><p><%= link_to "Sign in", new_session_path(resource_name) %> to your existing account.</p></li>
+  <% end %>
+
+  <% unless controller_name == 'registrations' %>
+    <li>
+      <p>
+        No account yet? <%= link_to "Sign up",
+        new_registration_path(resource_name) %> for a new account.
+      </p>
+    </li>
+  <% end %>
+
+  <% unless controller_name == 'passwords' %>
+    <li><p><%= link_to "Forgot your password?", new_password_path(resource_name) %></p></li>
+  <% end %>
+
+  <% unless controller_name == 'confirmations' %>
+    <li><p><%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %></p></li>
+  <% end %>
+</ul>

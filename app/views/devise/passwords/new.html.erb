@@ -1,0 +1,22 @@
+<h2>Forgot your password?</h2>
+
+<div class="row">
+  <div class="span12 columns">
+    <p>
+      If you've forgotten your password, don't worry. Enter the email address
+      that you signed up with below and we'll send you instructions for
+      resetting the password by email.
+    </p>
+
+    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+      <%= form_text_input f, :text_field, :email, label: 'Email address', autofocus: true, class: 'xlarge', size: 30 %>
+
+      <div class="actions">
+        <%= f.submit "Send password reset instructions", class: 'btn primary' %>
+        <%= link_to 'Cancel', new_user_session_path, class: 'btn' %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= render :partial => "devise/shared/links" %>
+</div>

@@ -18,11 +18,22 @@
           <h3><%= link_to 'Fuel Prices', root_path %></h3>
 
           <ul>
-            <li class="active"><%= link_to 'Home', root_path %></li>
+            <li<%= request.path == root_path ? ' class="active"'.html_safe : '' %>><%= link_to 'Home', root_path %></li>
           </ul>
 
           <ul class="nav secondary-nav">
-            <li><%= link_to 'My Account', '#' %></li>
+            <% if user_signed_in? %>
+              <li>
+                <a href="#" class="dropdown-toggle"><%= current_user.name %></a>
+                <ul class="menu-dropdown">
+                  <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+                  <li class="divider">---</li>
+                  <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+                </ul>
+              </li>
+            <% else %>
+              <li<%= request.path == new_user_session_path ? ' class="active"'.html_safe : '' %>><%= link_to 'Sign in', new_user_session_path %></li>
+            <% end %>
           </ul>
         </div>
       </div>

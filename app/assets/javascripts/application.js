@@ -8,3 +8,21 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function() {
+  $("body").bind("click", function (e) {
+    $('.dropdown-toggle, .menu').parent("li").removeClass("open");
+  });
+
+  $(".dropdown-toggle, .menu").click(function (e) {
+    var $li = $(this).parent("li").toggleClass('open');
+    return false;
+  });
+
+  $("#flash .alert-message").delay(10000).hide('slow');
+
+  $(".alert-message a.close").click(function(e) {
+    $(this).parent(".alert-message").hide('slow');
+    return false;
+  })
+});

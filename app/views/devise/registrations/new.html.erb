@@ -1,0 +1,33 @@
+<h2>Sign up</h2>
+
+<div class="row">
+  <div class="span12 columns">
+    <p>
+      We just need a few details from you to get started with your account.
+    </p>
+
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+      <fieldset>
+        <legend>About you</legend>
+
+        <%= form_text_input f, :text_field, :name, autofocus: true, class: 'xlarge', size: 30 %>
+        <%= form_text_input f, :text_field, :email, label: 'Email address', class: 'xlarge', size: 30 %>
+
+      </fieldset>
+
+      <fieldset>
+        <legend>Choose a password</legend>
+
+        <%= form_text_input f, :password_field, :password, label: 'Password', class: 'xlarge', size: 30 %>
+        <%= form_text_input f, :password_field, :password_confirmation, label: 'Confirm your password', class: 'xlarge', size: 30 %>
+      </fieldset>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class: 'btn primary' %>
+        <%= link_to 'Cancel', root_path, class: 'btn' %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= render :partial => "devise/shared/links" %>
+</div>

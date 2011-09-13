@@ -1,0 +1,51 @@
+<h2>Edit User</h2>
+
+<div class="row">
+  <div class="span12 columns">
+    <p>
+      You can update your profile information here. Please remember to enter
+      your current password at the end of the form in order to update the
+      information.
+    </p>
+
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <fieldset>
+        <legend>About you</legend>
+
+        <%= form_text_input f, :text_field, :name, autofocus: true, class: 'xlarge', size: 30 %>
+        <%= form_text_input f, :text_field, :email, label: 'Email address', class: 'xlarge', size: 30 %>
+
+      </fieldset>
+
+      <fieldset>
+        <legend>Choose a password</legend>
+
+        <p>
+          You only need to fill in a password here if you want to change your
+          current password.
+        </p>
+
+        <%= form_text_input f, :password_field, :password, label: 'New password', hint: 'Leave password and password confirmation blank if you do not want to change your password', class: 'xlarge', size: 30 %>
+        <%= form_text_input f, :password_field, :password_confirmation, label: 'Confirm your new password', class: 'xlarge', size: 30 %>
+      </fieldset>
+
+      <%= form_text_input f, :password_field, :current_password, label: 'Current password', hint: 'We need your current password in order to update your profile.', class: 'xlarge', size: 30 %>
+
+      <div class="actions">
+        <%= f.submit "Update Profile", class: 'btn primary' %>
+        <%= link_to 'Cancel', root_path, class: 'btn' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="span4 columns">
+    <h3>Cancel my account</h3>
+
+    <p>
+      If you no longer want to use app, you can
+      <%= link_to "cancel your account", registration_path(resource_name), confirm: "Are you sure?", method: :delete %>.
+      Please be aware that this will immediately and irreversibly delete all
+      the worksheets stored with your account.
+    </p>
+  </div>
+</div>

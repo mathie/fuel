@@ -1,0 +1,25 @@
+<h2>Change your password</h2>
+
+<div class="row">
+  <div class="span12 columns">
+    <p>
+      Thanks for following the link we sent you. There's one more step: choose
+      a new password. Fill in your new password here and we'll get you logged
+      in. Don't forget the password this time! ;-)
+    </p>
+
+    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= f.hidden_field :reset_password_token %>
+
+      <%= form_text_input f, :password_field, :password, label: 'New password', autofocus: true, class: 'xlarge', size: 30 %>
+      <%= form_text_input f, :password_field, :password_confirmation, label: 'Confirm your new password', class: 'xlarge', size: 30 %>
+
+      <div class="actions">
+        <%= f.submit "Change my password", class: 'btn primary' %>
+        <%= link_to 'Cancel', new_user_session_path, class: 'btn' %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= render :partial => "devise/shared/links" %>
+</div>

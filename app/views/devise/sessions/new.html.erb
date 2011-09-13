@@ -1,0 +1,36 @@
+<h2>Sign in</h2>
+
+<div class="row">
+  <div class="span12 columns">
+    <p>
+      Enter the email address and password you used to sign up. Once you're
+      signed in, you'll have access to the full functionality of the app. See
+      the links to the right hand side if you're having trouble signing in.
+    </p>
+
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <%= form_text_input f, :text_field, :email, label: 'Email address', autofocus: true, class: 'xlarge', size: 30 %>
+      <%= form_text_input f, :password_field, :password, label: 'Password', class: 'xlarge', size: 30, hint: link_to("Forgot your password?", new_password_path(resource_name)) %>
+
+      <div class="clearfix">
+        <div class="input">
+          <ul class="inputs-list">
+            <li>
+              <label>
+                <%= f.check_box :remember_me %>
+                <span>Remember my login on this computer.</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign in", class: 'btn primary' %>
+        <%= link_to 'Cancel', root_path, class: 'btn' %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= render :partial => "devise/shared/links" %>
+</div>
