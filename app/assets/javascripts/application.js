@@ -7,6 +7,7 @@
 //= require modernizr/modernizr
 //= require jquery
 //= require jquery_ujs
+//= require highcharts/highcharts
 //= require_tree .
 
 $(document).ready(function() {
