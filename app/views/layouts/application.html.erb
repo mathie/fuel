@@ -33,6 +33,7 @@
 
           <ul>
             <li<%= request.path == root_path ? ' class="active"'.html_safe : '' %>><%= link_to 'Home', root_path %></li>
+            <li<%= request.path.starts_with?(fuel_prices_path) ? ' class="active"'.html_safe : '' %>><%= link_to 'Fuel Prices', fuel_prices_path %></li>
           </ul>
 
           <ul class="nav secondary-nav">
