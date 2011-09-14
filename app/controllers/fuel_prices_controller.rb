@@ -10,4 +10,9 @@ class FuelPricesController < ApplicationController
     @fuel_prices = FuelPrice.scoped
     respond_with(@fuel_prices)
   end
+
+  def diesel_vs_unleaded_prices
+    @fuel_prices = FuelPrice.scoped
+    respond_with(@fuel_prices)
+  end
 end

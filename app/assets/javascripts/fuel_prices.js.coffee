@@ -69,3 +69,10 @@ $ ->
       json: 'diesel_net_price'
     }
   ]
+
+  fuel_price_chart 'Diesel vs Unleaded', 'diesel-vs-unleaded-prices-chart', [
+    {
+      name: 'Difference in price between Diesel and Unleaded'
+      json: 'diesel_unleaded_differential'
+    }
+  ]

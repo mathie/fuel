@@ -25,9 +25,14 @@ class FuelPrice < ActiveRecord::Base
         :diesel_price_without_vat,
         :unleaded_net_price,
         :diesel_net_price,
-        :fuel_duty
+        :fuel_duty,
+        :diesel_unleaded_differential
       ]
     }.merge(options || {}))
+  end
+
+  def diesel_unleaded_differential
+    diesel_price - unleaded_price
   end
 
   def unleaded_price_without_vat
