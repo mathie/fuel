@@ -1,5 +1,9 @@
 Fuel::Application.routes.draw do
-  resources :fuel_prices, only: [ :index ]
+  resources :fuel_prices, only: [ :index ] do
+    collection do
+      get :net_prices
+    end
+  end
 
   devise_for :users
 
