@@ -13,6 +13,9 @@ $ ->
                 timestamp = Date.parse(fuel_price["week_begins_on"].replace(/-/g,"/"))
                 chart.series[0].addPoint([timestamp, parseFloat(fuel_price["unleaded_price"])], false)
                 chart.series[1].addPoint([timestamp, parseFloat(fuel_price["diesel_price"])], false)
+                chart.series[2].addPoint([timestamp, parseFloat(fuel_price["unleaded_net_price"])], false)
+                chart.series[3].addPoint([timestamp, parseFloat(fuel_price["diesel_net_price"])], false)
+                chart.series[4].addPoint([timestamp, parseFloat(fuel_price["fuel_duty"])], false)
               chart.redraw()
     title:
       text: 'Fuel Prices'
@@ -40,11 +43,23 @@ $ ->
           "£" + this.value.toFixed(2)
     series: [
       {
-        name: 'Unleaded'
+        name: 'Unleaded (Pump price)'
         data: []
       }
       {
-        name: 'Diesel'
+        name: 'Diesel (Pump price)'
+        data: []
+      }
+      {
+        name: 'Unleaded (Net price)'
+        data: []
+      }
+      {
+        name: 'Diesel (net price)'
+        data: []
+      }
+      {
+        name: 'Fuel Duty'
         data: []
       }
     ]

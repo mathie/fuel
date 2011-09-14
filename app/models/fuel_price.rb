@@ -17,4 +17,41 @@ class FuelPrice < ActiveRecord::Base
       end
     end
   end
+
+  def as_json(options = {})
+    super({
+      :methods => [
+        :unleaded_price_without_vat,
+        :diesel_price_without_vat,
+        :unleaded_net_price,
+        :diesel_net_price,
+        :fuel_duty
+      ]
+    }.merge(options || {}))
+  end
+
+  def unleaded_price_without_vat
+    (gross_fraction * unleaded_price).round(4)
+  end
+
+  def diesel_price_without_vat
+    (gross_fraction * diesel_price).round(4)
+  end
+
+  def unleaded_net_price
+    unleaded_price_without_vat - fuel_duty
+  end
+
+  def diesel_net_price
+    diesel_price_without_vat - fuel_duty
+  end
+
+  def fuel_duty
+    FuelDuty.at(week_begins_on).duty_rate_per_litre
+  end
+
+  private
+  def gross_fraction
+    VatRate.at(week_begins_on).gross_fraction
+  end
 end
