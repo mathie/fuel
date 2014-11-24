@@ -32,3 +32,23 @@ might be interesting.
   example, having done 4,000 miles in the new C4 diesel over the past 4
   months, averaging, according to the computer in there, 43mpg, how does that
   compare to the 29.8mpg we were getting in the Volvo?
+
+## Getting started
+
+To run the app locally, make sure you've got Ruby 1.9.x installed (I'm using
+1.9.3, installed through rbenv) and PostgreSQL running. Install the gem
+dependencies with:
+
+    bundle install
+
+then create the database and insert the fuel price data:
+
+    createuser -s fuel
+    rake db:create:all
+    rake db:reset
+
+Now you can run the app server with:
+
+    foreman start
+
+and visit <http://localhost:5000/fuel_prices> to check out the fuel price data.
