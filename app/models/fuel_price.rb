@@ -9,10 +9,14 @@ class FuelPrice < ActiveRecord::Base
     transaction do
       delete_all
       CSV.foreach(csv_file) do |row|
-        date_string, _, unleaded_price, diesel_price, _, fuel_duty, _, _, vat_rate = row
+        date_string, unleaded_price, diesel_price, _ = row
 
         if date_string.present? && date_string =~ /^[0-9]+\/[0-9]+\/[0-9]+/
-          create! week_begins_on: date_string, unleaded_price: BigDecimal(unleaded_price) / BigDecimal('100'), diesel_price: BigDecimal(diesel_price) / BigDecimal('100')
+          create!(
+            week_begins_on: date_string,
+            unleaded_price: BigDecimal(unleaded_price) / BigDecimal('100'),
+            diesel_price: BigDecimal(diesel_price) / BigDecimal('100')
+          )
         end
       end
     end

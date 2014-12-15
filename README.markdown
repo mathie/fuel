@@ -4,12 +4,11 @@
 
 I got the data from here:
 
-* <http://www.decc.gov.uk/en/content/cms/statistics/energy_stats/prices/prices.aspx#oil>
+* The CSV file here: <https://www.gov.uk/government/statistical-data-sets/oil-and-petroleum-products-weekly-statistics>
 
-I took the worksheet that had all the data on one worksheet, saved it as CSV,
-then dumped it in the `db` folder for import. So far I've skipped the fuel
-duty and VAT rate, but I wonder if "normalising" the data by removing them
-might be interesting.
+I took the CSV file, then dumped it in the `db` folder for import. So far I've
+skipped the fuel duty and VAT rate, but I wonder if "normalising" the data by
+removing them might be interesting.
 
 ## Random TODO list
 
